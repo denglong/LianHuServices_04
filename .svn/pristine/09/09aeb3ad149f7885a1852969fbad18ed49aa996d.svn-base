@@ -1,0 +1,47 @@
+//
+//  GeTuiSDKLocation.m
+//  LianHuServices
+//
+//  Created by denglong on 16/4/29.
+//  Copyright © 2016年 邓龙. All rights reserved.
+//
+
+#import "GeTuiSDKLocation.h"
+
+@implementation GeTuiSDKLocation
+
++ (void)locationNoticationAddAction:(NSDictionary *)infoDic {
+    
+    NSDate *date = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    
+    if (notification) {
+        
+        //设置推送时间
+        notification.fireDate = date;
+        
+        //设置时区
+        notification.timeZone = [NSTimeZone defaultTimeZone];
+        
+        //设置重复间隔
+        notification.repeatInterval = NSWeekCalendarUnit;
+        
+        //设置推送声音
+        notification.soundName = UILocalNotificationDefaultSoundName;
+        
+        //推送内容
+        notification.alertBody = [infoDic objectForKey:@"content"];
+        
+        //应用图标红点数量
+        notification.applicationIconBadgeNumber = 0;
+        
+        //推送传入参数
+        notification.userInfo = infoDic;
+
+        //添加推送到UIApplication
+        UIApplication *app = [UIApplication sharedApplication];
+        [app scheduleLocalNotification:notification];
+    }
+}
+
+@end

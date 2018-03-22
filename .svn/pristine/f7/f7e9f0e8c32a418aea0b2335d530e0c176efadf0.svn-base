@@ -1,0 +1,129 @@
+//
+//  FileViewController.swift
+//  LianHuServices
+//
+//  Created by denglong on 16/4/25.
+//  Copyright © 2016年 邓龙. All rights reserved.
+//  办件列表
+
+import UIKit
+
+var FILEVIEWTITLE:String!
+var SFLAG:String!
+
+class FileViewController: BaseViewController {
+
+    @IBOutlet weak var fileTableView: UITableView!
+    @IBOutlet weak var searchView: UISearchBar!
+    var infoList:Array<Dictionary<String, String>>! = []
+    var searchStr:String! = ""
+    var indexPage:NSInteger = 1
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        title = FILEVIEWTITLE
+        registerTableViewCell()
+        createRefreshAction(fileTableView)
+        showHUD()
+    }
+
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        searchStr = searchBar.text
+        searchBar.resignFirstResponder()
+        headerRefreshing()
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchStr = searchBar.text
+        searchBar.resignFirstResponder()
+        headerRefreshing()
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        searchView.resignFirstResponder()
+    }
+    
+    func registerTableViewCell() {
+        fileTableView.registerNib(UINib(nibName: "PreliminaryCell", bundle: nil), forCellReuseIdentifier: "PreliminaryCell")
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return infoList.count
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 43
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("PreliminaryCell") as! PreliminaryCell
+        if infoList.count > 0 {
+            cell.contentLab.text = infoList[indexPath.row]["e_code"]! + infoList[indexPath.row]["title"]!
+        }
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let ID = infoList[indexPath.row]["id"]
+        let userId = CommClass.sharedCommon().localObjectForKey(USER_ID) as? String
+        let general = GeneralWebController(nibName: "GeneralWebController", bundle: nil)
+        general.title = title
+        general.urlStr = String(format: "http://117.36.51.98:8093/phone_interface2.jsp?action_type=event_content&id=%@&uid=", ID!, userId!)
+        navigationController?.pushViewController(general, animated: true)
+    }
+    
+    override func headerRefreshing() {
+        indexPage = 1
+        infoList = []
+        apiRequstFileViewDataAction()
+    }
+    
+    override func footerRefreshing() {
+            indexPage += 1
+            apiRequstFileViewDataAction()
+    }
+    
+    //MARK: - Api request fileView data handle action
+    func apiRequstFileViewDataAction() {
+        showHUD()
+        let userId = CommClass.sharedCommon().localObjectForKey(USER_ID)
+        let params = ["action_type":"event_list", "sflag":SFLAG, "user_id":userId, "kw":searchStr, "cp":String(indexPage)]
+        clientNetwork.requestDataMethodSystemParameters(params, success:
+            { (data:AnyObject!, response:NSURLResponse!) in
+                
+                let dataList:Array<Dictionary<String, String>> = data as! Array
+                if dataList.count == 0 {
+                    if self.indexPage > 1 {
+                        self.indexPage -= 1
+                    }
+                }
+                for dic:Dictionary<String, String> in dataList {
+                    self.infoList.append(dic)
+                }
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.hiddenHUD()
+                    self.refreshHeaderView.endRefreshing()
+                    self.refreshFooterView.endRefreshing()
+                    self.fileTableView.reloadData()
+                })
+                
+        }) { (error:NSError!) in
+            if self.indexPage > 1 {
+                self.indexPage -= 1
+            }
+            dispatch_async(dispatch_get_main_queue(), {
+                self.hiddenHUD()
+                self.refreshHeaderView.endRefreshing()
+                self.refreshFooterView.endRefreshing()
+                self.fileTableView.reloadData()
+            })
+            print(error)
+        }
+    }
+
+}

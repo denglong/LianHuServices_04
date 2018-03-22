@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="DateBaseCell" customModule="LianHuServices" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="huizong" translatesAutoresizingMaskIntoConstraints="NO" id="Qfc-23-45X">
+                        <rect key="frame" x="15" y="12" width="19" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="19" id="6Ul-Ij-iPp"/>
+                            <constraint firstAttribute="width" constant="19" id="fGO-bJ-h2v"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="企业信息查询" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQj-tb-bF1">
+                        <rect key="frame" x="42" y="0.0" width="268" height="43.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Qfc-23-45X" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="FPt-yD-Kq8"/>
+                    <constraint firstItem="Qfc-23-45X" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Ka7-f7-XuI"/>
+                    <constraint firstAttribute="trailing" secondItem="nQj-tb-bF1" secondAttribute="trailing" constant="10" id="TgD-Id-gyU"/>
+                    <constraint firstItem="nQj-tb-bF1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="cv3-6q-oUV"/>
+                    <constraint firstItem="nQj-tb-bF1" firstAttribute="leading" secondItem="Qfc-23-45X" secondAttribute="trailing" constant="8" id="kaZ-zC-aQs"/>
+                    <constraint firstAttribute="bottom" secondItem="nQj-tb-bF1" secondAttribute="bottom" id="yX4-MW-vmW"/>
+                </constraints>
+            </tableViewCellContentView>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="huizong" width="19" height="19"/>
+    </resources>
+</document>

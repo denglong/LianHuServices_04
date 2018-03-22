@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "8d90af39-eb9e-4579-8083-0111570bba95++1994",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "8d90af39-eb9e-4579-8083-0111570bba95++1994" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "8d90af39-eb9e-4579-8083-0111570bba95++1994" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "67F4B461-5CE6-48D5-AE4D-88224B8E6740",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "8d90af39-eb9e-4579-8083-0111570bba95++1994" : "LianHuServices_02\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "LianHuServices",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "LianHuServices.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/code.taobao.org\/svn\/LianHuServes",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8d90af39-eb9e-4579-8083-0111570bba95++1994"
+    }
+  ]
+}

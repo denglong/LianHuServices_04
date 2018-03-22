@@ -1,0 +1,91 @@
+//
+//  AGRequestData.h
+//  AGConnectionNet
+//
+//  Created by 邓龙 on 16/1/17.
+//  Copyright © 2016年 邓龙. All rights reserved.
+//
+
+//普通api请求url
+#define API_URL @"https://zw.lianhu.gov.cn/phone_interface2.jsp"
+//管理员api请求url
+#define API_URL_SYSTEM @"http://117.36.51.98:8093/phone_interface2.jsp"
+
+#import <Foundation/Foundation.h>
+
+/**
+ 网络请求方式 POST / GET
+ */
+typedef enum {
+    POST,
+    GET
+}RequestMethod;
+
+
+/**
+ 网络请求数据返回数据格式(XML , JSON)
+ */
+typedef enum {
+    XML,
+    JSON
+}DataFormat;
+
+
+@interface AGRequestData : NSObject
+
+
+/**
+ *  @author Ager, 2016-01-17
+ *
+ *  类方法,实例化当前数据请求对象
+ *
+ *  @return 当前请求对象
+ */
++ (instancetype)shareRequestData;
+
+
+/**
+ *  @author Ager, 2016-01-17
+ *
+ *  请求数据 (session 请求)
+ *
+ *  @param URLStr     URL 地址
+ *  @param parameters 请求所需参数
+ *  @param method     POST / GET (默认 GET 请求)
+ *  @param success    请求成功回调函数
+ *  @param faild      请求失败回调函数
+ *  
+ *  @return NSData 数据格式的数据
+ */
+- (void)requestDataURL:(NSString*)URLStr parameters:(NSDictionary*)parameters method:(RequestMethod)method success:(void(^)(NSData *data , NSURLResponse *response)) success fail:(void(^)(NSError *error)) fail;
+
+
+/**
+ *  @author Ager, 2016-01-17
+ *
+ *   请求数据,并对数据进行解析
+ *
+ *  @param URLStr     URL 地址
+ *  @param parameters 请求所需参数
+ *  @param method     POST / GET (默认 GET 请求)
+ *  @param format     返回数据形势(XML / JSON)
+ *  @param success    请求成功回调函数
+ *  @param fail       请求失败回调函数
+ *
+ *  @return 解析后的数据
+ */
+- (void)requestDataURL:(NSString *)URLStr parameters:(NSDictionary *)parameters method:(RequestMethod)method dataFormat:(DataFormat)format success:(void (^)(id data,NSURLResponse *response))success fail:(void (^)(NSError *))fail;
+
+
+
+//普通网络请求
+- (void)requestDataMethParameters:(NSDictionary *)parameters
+                          success:(void (^)( id data,NSURLResponse *response))success
+                             fail:(void (^)(NSError *))fail;
+
+//管理员网络请求
+- (void)requestDataMethodSystemParameters:(NSDictionary *)parameters
+                          success:(void (^)( id data,NSURLResponse *response))success
+                             fail:(void (^)(NSError *))fail;
+
+@end

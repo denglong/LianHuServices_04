@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="aK6-6U-fBD" customClass="ShareView" customModule="LianHuServices" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="94" height="89"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="63X-tD-a4r">
+                    <rect key="frame" x="22" y="15" width="50" height="59"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccr-oW-n8U">
+                            <rect key="frame" x="2" y="0.0" width="46" height="45"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="45" id="Ife-Mu-KJX"/>
+                                <constraint firstAttribute="width" constant="46" id="JRm-8p-hyk"/>
+                            </constraints>
+                            <state key="normal" backgroundImage="icon_weChat"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="JRm-8p-hyk"/>
+                                </mask>
+                            </variation>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="微信" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRY-UD-izT">
+                            <rect key="frame" x="11" y="45" width="28" height="14"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="14" id="S0z-4i-kyp"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="ccr-oW-n8U" secondAttribute="trailing" id="0A9-tN-qxQ"/>
+                        <constraint firstItem="mRY-UD-izT" firstAttribute="top" secondItem="ccr-oW-n8U" secondAttribute="bottom" id="0cv-7B-jRJ"/>
+                        <constraint firstItem="ccr-oW-n8U" firstAttribute="top" secondItem="63X-tD-a4r" secondAttribute="top" id="2aJ-Kn-sxR"/>
+                        <constraint firstItem="mRY-UD-izT" firstAttribute="centerX" secondItem="63X-tD-a4r" secondAttribute="centerX" id="Gd5-EZ-Vn4"/>
+                        <constraint firstItem="ccr-oW-n8U" firstAttribute="centerX" secondItem="63X-tD-a4r" secondAttribute="centerX" id="Jh1-5G-4s8"/>
+                        <constraint firstItem="ccr-oW-n8U" firstAttribute="leading" secondItem="63X-tD-a4r" secondAttribute="leading" id="gmf-Oq-dZg"/>
+                        <constraint firstAttribute="width" constant="50" id="hPB-GK-hUZ"/>
+                        <constraint firstAttribute="height" constant="59" id="iMb-Dc-6W8"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="hPB-GK-hUZ"/>
+                            <exclude reference="0A9-tN-qxQ"/>
+                            <exclude reference="gmf-Oq-dZg"/>
+                        </mask>
+                    </variation>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="63X-tD-a4r" firstAttribute="centerX" secondItem="aK6-6U-fBD" secondAttribute="centerX" id="KsE-Rs-9eK"/>
+                <constraint firstItem="63X-tD-a4r" firstAttribute="centerY" secondItem="aK6-6U-fBD" secondAttribute="centerY" id="NMD-Kf-yyc"/>
+                <constraint firstItem="63X-tD-a4r" firstAttribute="leading" secondItem="aK6-6U-fBD" secondAttribute="leading" constant="22" id="srK-xh-MVd"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="shareBtn" destination="ccr-oW-n8U" id="5n5-9s-Srs"/>
+                <outlet property="shareTitle" destination="mRY-UD-izT" id="FfO-gk-s50"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_weChat" width="46" height="45"/>
+    </resources>
+</document>
